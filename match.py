@@ -4,24 +4,29 @@ def match(sample):
     # make a stack
     stack = Stack()
 
-    # make a list of the open chars
-    open = ['(', '{', '[']
-    
-    # make a list of the close chars
-    close = [')', '}', '[']
-
-
+    # make a dictionary of delimiters
+    delimiters = {
+        '[':']',
+        '{':'}',
+        '(':')'
+    }
     # iterate over sample string
     for char in sample:
     # if open is encountered, put on stack
-        if char in open:
+        if char in delimiters.keys():
             stack.push(char)
-    # if close is encountered, check to see if the last add was a match
-        elif char in close:
-            last = stack.pop()
-            if not open.index(last) == close.index(char):
+    # if close is encountered, check to see if the last add was a matching delimiter
+        elif char in delimiters.values():
+            try:
+                last = stack.pop()
+            except IndexError:
                 return False
-    return True
-
-
-    # at end, remove from
+            if not delimiters[last] == char:
+                return False
+    # once the loop is closed, if there are chars on the stack, fail
+    try:
+        stack.pop()
+        return False
+    # if the pop fails, everything is great!
+    except IndexError:
+        return True
