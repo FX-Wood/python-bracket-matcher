@@ -1,9 +1,12 @@
-Challenge: Bracket Matching
-Create a method in Python called test_brackets that takes a string and determines if all brackets are correctly matching / nested (returns True or False). This is code could be used as part of a system to detect syntax errors in code.
+# Challenge: Bracket Matching
 
-It should check for the following: [ ],{ },( )
+Create a method in Python called `test_brackets` that takes a `string` and determines if all brackets are correctly matching / nested (returns `True` or `False`). This is code could be used as part of a system to detect syntax errors in code.
 
-Usage Examples
+It should check for the following: `[ ]`,`{ }`,`( )`
+
+### Usage Examples
+
+```python
 test_brackets('abc(123)')
 #returns true
 
@@ -30,3 +33,4 @@ test_brackets('[]]')
 
 test_brackets('abc123yay')
 #returns true -- no brackets = correctly matched
+```
