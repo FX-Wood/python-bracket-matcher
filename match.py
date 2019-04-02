@@ -1,7 +1,6 @@
 from stack import Stack
 
 def match(sample):
-    # make a stack
     stack = Stack()
 
     # make a dictionary of delimiters
@@ -18,10 +17,10 @@ def match(sample):
     # if close is encountered, check to see if the last add was a matching delimiter
         elif char in delimiters.values():
             try:
-                last = stack.pop()
+                top = stack.pop()
             except IndexError:
                 return False
-            if not delimiters[last] == char:
+            if not delimiters[top] == char:
                 return False
     # once the loop is closed, if there are chars on the stack, fail
     try:
